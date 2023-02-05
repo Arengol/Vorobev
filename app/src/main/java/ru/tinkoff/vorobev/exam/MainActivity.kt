@@ -18,23 +18,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var networkService: NetworkRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar!!.hide()
         setContentView(binding.root)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        lifecycleScope.launchWhenCreated {
-            val result = networkService.getFilmItems()
-            println("TEST")
-            when (result){
-                is ResultWrapper.Success -> println("TEST $result")
-                else -> println("TEST error")
-            }
-            val result2 = networkService.getFilmInfoById(505898)
-            when (result2){
-                is ResultWrapper.Success -> println("TEST $result2")
-                else -> println("TEST error")
-            }
-        }
     }
 }
