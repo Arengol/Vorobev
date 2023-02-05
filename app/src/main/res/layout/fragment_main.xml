@@ -100,7 +100,7 @@
         android:visibility="invisible"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/TryAgainButton"
+        android:id="@+id/tryAgainButton"
         android:layout_width="124dp"
         android:layout_height="55dp"
         android:layout_marginTop="36dp"
@@ -115,7 +115,7 @@
         android:visibility="invisible"/>
 
     <ProgressBar
-        android:id="@+id/FilmTopProgressBar"
+        android:id="@+id/filmTopProgressBar"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:indeterminateTint="@color/inactive_blue"

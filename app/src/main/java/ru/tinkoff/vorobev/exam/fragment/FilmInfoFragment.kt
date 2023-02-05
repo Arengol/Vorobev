@@ -32,10 +32,10 @@ class FilmInfoFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getFilmInfo()
-        binding.ImageBackButton.setOnClickListener {
+        binding.imageBackButton.setOnClickListener {
             binding.root.findNavController().navigate(R.id.action_filmInfoFragment_to_mainFragment)
         }
-        binding.TryAgainButton1.setOnClickListener {
+        binding.filmInfoTryAgainButton.setOnClickListener {
             viewModel.getFilmInfo()
         }
 
@@ -43,45 +43,46 @@ class FilmInfoFragment: Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.filmState.observe(this){
+        viewModel.filmState.observe(this) {
             when(it){
                 UiState.Error -> {
-                    binding.errorIcon1.isVisible = true
-                    binding.errorTextView1.isVisible = true
-                    binding.TryAgainButton1.isVisible = true
-                    binding.PosterFilmImageView.isVisible = false
-                    binding.FilmTextView.isVisible = false
-                    binding.DescriptionFilmTextView.isVisible = false
-                    binding.GenreFilmTextView.isVisible = false
-                    binding.CountryFilmTextView.isVisible = false
-                    binding.FilmInfoProgressBar.isVisible = false
+                    binding.filmInfoErrorIcon.isVisible = true
+                    binding.filmInfoErrorTextView.isVisible = true
+                    binding.filmInfoTryAgainButton.isVisible = true
+                    binding.posterFilmImageView.isVisible = false
+                    binding.filmTextView.isVisible = false
+                    binding.descriptionFilmTextView.isVisible = false
+                    binding.genreFilmTextView.isVisible = false
+                    binding.countryFilmTextView.isVisible = false
+                    binding.filmInfoProgressBar.isVisible = false
                 }
                 UiState.Loading -> {
-                    binding.errorIcon1.isVisible = false
-                    binding.errorTextView1.isVisible = false
-                    binding.TryAgainButton1.isVisible = false
-                    binding.PosterFilmImageView.isVisible = false
-                    binding.FilmTextView.isVisible = false
-                    binding.DescriptionFilmTextView.isVisible = false
-                    binding.GenreFilmTextView.isVisible = false
-                    binding.CountryFilmTextView.isVisible = false
-                    binding.FilmInfoProgressBar.isVisible = true
+                    binding.filmInfoErrorIcon.isVisible = false
+                    binding.filmInfoErrorTextView.isVisible = false
+                    binding.filmInfoTryAgainButton.isVisible = false
+                    binding.posterFilmImageView.isVisible = false
+                    binding.filmTextView.isVisible = false
+                    binding.descriptionFilmTextView.isVisible = false
+                    binding.genreFilmTextView.isVisible = false
+                    binding.countryFilmTextView.isVisible = false
+                    binding.filmInfoProgressBar.isVisible = true
                 }
                 UiState.Success -> {
-                    binding.errorIcon1.isVisible = false
-                    binding.errorTextView1.isVisible = false
-                    binding.TryAgainButton1.isVisible = false
-                    binding.PosterFilmImageView.isVisible = true
-                    binding.FilmTextView.isVisible = true
-                    binding.DescriptionFilmTextView.isVisible = true
-                    binding.GenreFilmTextView.isVisible = true
-                    binding.CountryFilmTextView.isVisible = true
-                    binding.FilmInfoProgressBar.isVisible = false
-                    Glide.with(binding.root).load(viewModel.filmData.value!!.posterUrl).into(binding.PosterFilmImageView)
-                    binding.FilmTextView.text = viewModel.filmData.value?.nameRu ?: ""
-                    binding.DescriptionFilmTextView.text = viewModel.filmData.value?.description ?: ""
-                    binding.GenreFilmTextView.text = "Жанры: " + viewModel.filmData.value?.genres?.joinToString(", ")
-                    binding.CountryFilmTextView.text = "Страны: " + viewModel.filmData.value?.country?.joinToString(", ")
+                    binding.filmInfoErrorIcon.isVisible = false
+                    binding.filmInfoErrorTextView.isVisible = false
+                    binding.filmInfoTryAgainButton.isVisible = false
+                    binding.posterFilmImageView.isVisible = true
+                    binding.filmTextView.isVisible = true
+                    binding.descriptionFilmTextView.isVisible = true
+                    binding.genreFilmTextView.isVisible = true
+                    binding.countryFilmTextView.isVisible = true
+                    binding.filmInfoProgressBar.isVisible = false
+
+                    Glide.with(binding.root).load(viewModel.filmData.value!!.posterUrl).into(binding.posterFilmImageView)
+                    binding.filmTextView.text = viewModel.filmData.value?.nameRu ?: ""
+                    binding.descriptionFilmTextView.text = viewModel.filmData.value?.description ?: ""
+                    binding.genreFilmTextView.text = "Жанры: " + viewModel.filmData.value?.genres?.joinToString(", ")
+                    binding.countryFilmTextView.text = "Страны: " + viewModel.filmData.value?.country?.joinToString(", ")
 
                 }
                 UiState.Wait -> {}

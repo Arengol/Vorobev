@@ -30,7 +30,7 @@ class MainFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.TryAgainButton.setOnClickListener {
+        binding.tryAgainButton.setOnClickListener {
             viewModel.getFilms()
         }
     }
@@ -45,8 +45,8 @@ class MainFragment: Fragment() {
                     binding.recyclerView.isVisible = false
                     binding.errorIcon.isVisible = true
                     binding.errorTextView.isVisible = true
-                    binding.TryAgainButton.isVisible = true
-                    binding.FilmTopProgressBar.isVisible = false
+                    binding.tryAgainButton.isVisible = true
+                    binding.filmTopProgressBar.isVisible = false
                 }
                 UiState.Loading -> {
                     binding.popularButton.isVisible = false
@@ -54,8 +54,8 @@ class MainFragment: Fragment() {
                     binding.recyclerView.isVisible = false
                     binding.errorIcon.isVisible = false
                     binding.errorTextView.isVisible = false
-                    binding.TryAgainButton.isVisible = false
-                    binding.FilmTopProgressBar.isVisible = true
+                    binding.tryAgainButton.isVisible = false
+                    binding.filmTopProgressBar.isVisible = true
                 }
                 UiState.Success -> {
                     binding.popularButton.isVisible = true
@@ -63,8 +63,8 @@ class MainFragment: Fragment() {
                     binding.recyclerView.isVisible = true
                     binding.errorIcon.isVisible = false
                     binding.errorTextView.isVisible = false
-                    binding.TryAgainButton.isVisible = false
-                    binding.FilmTopProgressBar.isVisible = false
+                    binding.tryAgainButton.isVisible = false
+                    binding.filmTopProgressBar.isVisible = false
                     binding.recyclerView.adapter = PopularFilmsAdapter(viewModel)
                 }
                 UiState.Wait -> viewModel.getFilms()
