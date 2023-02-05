@@ -1,5 +1,6 @@
 package ru.tinkoff.vorobev.exam.network.response
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import ru.tinkoff.vorobev.exam.data.Film
 import ru.tinkoff.vorobev.exam.network.Transformable
@@ -10,7 +11,7 @@ data class FilmInfoResponse(
     val description: String? = null,
     val nameRu: String? = null,
     val genres: List<GenreResponse> = emptyList(),
-    val country: List<CountryResponse> = emptyList()
+    val countries: List<CountryResponse> = emptyList()
 ): Transformable<Film> {
     override fun transform(): Film {
         val genres = mutableListOf<String>()
@@ -18,7 +19,7 @@ data class FilmInfoResponse(
         this.genres.forEach{
             genres.add(it.genre)
         }
-        this.country.forEach{
+        this.countries.forEach{
             country.add(it.country)
         }
         return Film(
