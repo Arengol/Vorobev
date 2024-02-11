@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var networkService: NetworkRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //supportActionBar!!.hide()
         setContentView(binding.root)
     }
 }

@@ -33,6 +33,7 @@ class FilmInfoFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getFilmInfo()
         binding.imageBackButton.setOnClickListener {
+            viewModel.normalizeState()
             binding.root.findNavController().navigate(R.id.action_filmInfoFragment_to_mainFragment)
         }
         binding.filmInfoTryAgainButton.setOnClickListener {

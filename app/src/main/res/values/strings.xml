@@ -4,4 +4,6 @@
     <string name="networkErrorText">Произошла ошибка при загрузке данных,\n проверьте подключение к сети</string>
     <string name="favorite">Избранное</string>
     <string name="popular">Популярные</string>
+    <string name="search">Поиск</string>
+    <string name="searchError">Не найдено</string>
 </resources>

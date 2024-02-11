@@ -33,6 +33,9 @@ class FilmViewModelImpl @Inject constructor (private val networkRepository: Netw
 
     override var selectedFilm: Int = 0
 
+    private val _searchFilmData = MutableLiveData<List<FilmItem>>()
+    override val searchFilmData: LiveData<List<FilmItem>>
+        get() = _searchFilmData
 
     override fun getFilms() {
         viewModelScope.launch{
@@ -58,5 +61,19 @@ class FilmViewModelImpl @Inject constructor (private val networkRepository: Netw
                 }
             }
         }
+    }
+
+    override fun searchFilm(searchRequest: String) {
+        val searchBuffer = _popularFilmsData.value?.filter { it.nameRu.contains(searchRequest, ignoreCase = true) } ?: listOf()
+        if (searchBuffer.isNullOrEmpty())
+            _popularFilmsState.value = UiState.SearchError
+        else {
+            _searchFilmData.value = searchBuffer
+            _popularFilmsState.value = UiState.SearchSuccess
+        }
+    }
+
+    override fun normalizeState() {
+        _popularFilmsState.value = UiState.Success
     }
 }
