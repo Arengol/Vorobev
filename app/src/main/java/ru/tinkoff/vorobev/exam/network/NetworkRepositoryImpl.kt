@@ -9,7 +9,7 @@ class NetworkRepositoryImpl (private val serverApi: ServerAPI, private val apiKe
         try {
             for (page in 1..35){
                 data.addAll(serverApi.getTopFilms(token = apiKey, page = page).transform())
-                Thread.sleep(100)
+                Thread.sleep(200)
             }
         } catch (error: Throwable) {
             println("TEST $error.message")
