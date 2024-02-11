@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Text" parent="TextAppearance.AppCompat">
+    </style>
+    <style name="Text.Medium">
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="Text.Regular">
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+    <style name="Text.Medium.25_600">
+        <item name="android:textSize">25sp</item>
+        <item name="android:fontWeight">600</item>
+    </style>
+    <style name="Text.Medium.20_600">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontWeight">600</item>
+    </style>
+    <style name="Text.Medium.16_500">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontWeight">500</item>Medium
+    </style>
+    <style name="Text.Medium.14_500">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    <style name="Text.Regular.14_400">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontWeight">400</item>
+    </style>
+</resources>

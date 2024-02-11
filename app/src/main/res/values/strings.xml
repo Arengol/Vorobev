@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TinkoffExam</string>
+    <string name="repeat">Повторить</string>
+    <string name="networkErrorText">Произошла ошибка при загрузке данных,\n проверьте подключение к сети</string>
+    <string name="favorite">Избранное</string>
+    <string name="popular">Популярные</string>
 </resources>
