@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.tinkoff.vorobev.exam.R
-import ru.tinkoff.vorobev.exam.data.FilmItem
 import ru.tinkoff.vorobev.exam.viewmodel.FilmViewModel
 
 class SearchFilmItemAdapter (private val viewModel: FilmViewModel):
@@ -38,11 +38,23 @@ class SearchFilmItemAdapter (private val viewModel: FilmViewModel):
         val year = viewModel.searchFilmData.value?.get(position)?.year ?: ""
         holder.NameFilmTextView.text = viewModel.searchFilmData.value?.get(position)?.nameRu ?: ""
         holder.InfoFilmTextView.text = "${mainGenre.capitalize()} ($year)"
+        holder.FavoriteFilmImageView.isVisible = viewModel.searchFilmData.value?.get(position)?.isFavorite ?: false
         Glide.with(context).load(viewModel.searchFilmData.value?.get(position)?.posterUrlPreview).into(holder.PosterPreviewFilmImageView)
         holder.itemView.setOnClickListener {
             viewModel.selectedFilm =
-                viewModel.searchFilmData.value!!.get(position).filmId
+                viewModel.searchFilmData.value!!.get(position)
             holder.itemView.findNavController().navigate(R.id.action_mainFragment_to_filmInfoFragment)
+        }
+        holder.itemView.setOnLongClickListener{
+            if (!viewModel.searchFilmData.value!!.get(position).isFavorite){
+                holder.FavoriteFilmImageView.isVisible = true
+                viewModel.addFavoriteFilm(viewModel.searchFilmData.value!!.get(position))
+            }
+            else{
+                holder.FavoriteFilmImageView.isVisible = false
+                viewModel.deleteFavoriteFilm(viewModel.searchFilmData.value!!.get(position))
+            }
+            true
         }
     }
 }

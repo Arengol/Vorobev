@@ -1,4 +1,4 @@
-package ru.tinkoff.vorobev.exam.data
+package ru.tinkoff.vorobev.exam.data.dto
 
 data class Film (
     val posterUrl: String,

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -38,11 +39,23 @@ class FilmItemAdapter (private val viewModel: FilmViewModel):
         val year = viewModel.popularFilmsData.value?.get(position)?.year ?: ""
         holder.NameFilmTextView.text = viewModel.popularFilmsData.value?.get(position)?.nameRu ?: ""
         holder.InfoFilmTextView.text = "${mainGenre.capitalize()} ($year)"
+        holder.FavoriteFilmImageView.isVisible = viewModel.popularFilmsData.value?.get(position)?.isFavorite ?: false
         Glide.with(context).load(viewModel.popularFilmsData.value?.get(position)?.posterUrlPreview).into(holder.PosterPreviewFilmImageView)
         holder.itemView.setOnClickListener {
             viewModel.selectedFilm =
-                viewModel.popularFilmsData.value!!.get(position).filmId
+                viewModel.popularFilmsData.value!!.get(position)
             holder.itemView.findNavController().navigate(R.id.action_mainFragment_to_filmInfoFragment)
+        }
+        holder.itemView.setOnLongClickListener{
+            if (!viewModel.popularFilmsData.value!!.get(position).isFavorite){
+            holder.FavoriteFilmImageView.isVisible = true
+            viewModel.addFavoriteFilm(viewModel.popularFilmsData.value!!.get(position))
+            }
+            else{
+                holder.FavoriteFilmImageView.isVisible = false
+                viewModel.deleteFavoriteFilm(viewModel.popularFilmsData.value!!.get(position))
+            }
+            true
         }
     }
 }

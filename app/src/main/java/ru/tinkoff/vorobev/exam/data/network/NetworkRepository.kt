@@ -1,7 +1,7 @@
-package ru.tinkoff.vorobev.exam.network
+package ru.tinkoff.vorobev.exam.data.network
 
-import ru.tinkoff.vorobev.exam.data.Film
-import ru.tinkoff.vorobev.exam.data.FilmItem
+import ru.tinkoff.vorobev.exam.data.dto.Film
+import ru.tinkoff.vorobev.exam.data.dto.FilmItem
 
 interface NetworkRepository {
     suspend fun getFilmItems (): ResultWrapper<List<FilmItem>>

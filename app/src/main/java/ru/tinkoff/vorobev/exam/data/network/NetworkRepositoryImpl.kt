@@ -1,9 +1,10 @@
-package ru.tinkoff.vorobev.exam.network
+package ru.tinkoff.vorobev.exam.data.network
 
-import ru.tinkoff.vorobev.exam.data.Film
-import ru.tinkoff.vorobev.exam.data.FilmItem
+import ru.tinkoff.vorobev.exam.data.dto.Film
+import ru.tinkoff.vorobev.exam.data.dto.FilmItem
 
-class NetworkRepositoryImpl (private val serverApi: ServerAPI, private val apiKey: String): NetworkRepository {
+class NetworkRepositoryImpl (private val serverApi: ServerAPI, private val apiKey: String):
+    NetworkRepository {
     override suspend fun getFilmItems(): ResultWrapper<List<FilmItem>> {
         val data = mutableListOf<FilmItem>()
         try {
@@ -13,7 +14,7 @@ class NetworkRepositoryImpl (private val serverApi: ServerAPI, private val apiKe
             }
         } catch (error: Throwable) {
             println("TEST $error.message")
-            return    ResultWrapper.NetworkError
+            return ResultWrapper.NetworkError
         }
         return ResultWrapper.Success(data)
     }

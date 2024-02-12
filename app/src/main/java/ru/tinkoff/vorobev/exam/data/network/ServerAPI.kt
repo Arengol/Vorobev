@@ -1,11 +1,11 @@
-package ru.tinkoff.vorobev.exam.network
+package ru.tinkoff.vorobev.exam.data.network
 
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ru.tinkoff.vorobev.exam.network.response.FilmInfoResponse
-import ru.tinkoff.vorobev.exam.network.response.FilmTopResponse
+import ru.tinkoff.vorobev.exam.data.network.response.FilmInfoResponse
+import ru.tinkoff.vorobev.exam.data.network.response.FilmTopResponse
 
 interface ServerAPI {
     @GET("top")

@@ -1,7 +1,7 @@
-package ru.tinkoff.vorobev.exam.network.response
+package ru.tinkoff.vorobev.exam.data.network.response
 
 import com.squareup.moshi.JsonClass
-import ru.tinkoff.vorobev.exam.data.FilmItem
+import ru.tinkoff.vorobev.exam.data.dto.FilmItem
 
 @JsonClass(generateAdapter = true)
 data class FilmTopResponse(

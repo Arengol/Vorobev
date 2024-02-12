@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import ru.tinkoff.vorobev.exam.databinding.ActivityMainBinding
-import ru.tinkoff.vorobev.exam.network.NetworkRepository
-import ru.tinkoff.vorobev.exam.network.ResultWrapper
+import ru.tinkoff.vorobev.exam.data.network.NetworkRepository
+import ru.tinkoff.vorobev.exam.data.network.ResultWrapper
 import javax.inject.Inject
 
 @AndroidEntryPoint

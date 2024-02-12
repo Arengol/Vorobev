@@ -1,4 +1,4 @@
-package ru.tinkoff.vorobev.exam.network.response
+package ru.tinkoff.vorobev.exam.data.network.response
 
 import com.squareup.moshi.JsonClass
 
