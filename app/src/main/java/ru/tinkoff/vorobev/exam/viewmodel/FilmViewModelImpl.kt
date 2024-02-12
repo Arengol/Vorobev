@@ -42,13 +42,6 @@ class FilmViewModelImpl @Inject constructor (private val mainRepository: MainRep
     override fun getFilms() {
         viewModelScope.launch{
             _popularFilmsState.value = UiState.Loading
-//            when(val result = networkRepository.getFilmItems()){
-//                is ResultWrapper.Success -> {
-//                    _popularFilmsData.value = result.value!!
-//                    _popularFilmsState.value = UiState.Success
-//                }
-//                is ResultWrapper.NetworkError -> _popularFilmsState.value = UiState.Error
-//            }
             try {
                 _popularFilmsData.value = mainRepository.getAllFilms()
                 _popularFilmsState.value = UiState.Success
@@ -63,13 +56,6 @@ class FilmViewModelImpl @Inject constructor (private val mainRepository: MainRep
     override fun getFilmInfo() {
         viewModelScope.launch {
             _filmState.value = UiState.Loading
-//            when(val result = networkRepository.getFilmInfoById(selectedFilm)) {
-//                ResultWrapper.NetworkError -> _filmState.value = UiState.Error
-//                is ResultWrapper.Success -> {
-//                    _filmsData.value = result.value!!
-//                    _filmState.value = UiState.Success
-//                }
-//            }
             try {
                 _filmsData.value = mainRepository.getFilmInfo(selectedFilm)
                 _filmState.value = UiState.Success

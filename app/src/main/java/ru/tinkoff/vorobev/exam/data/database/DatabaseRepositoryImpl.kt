@@ -22,7 +22,6 @@ class DatabaseRepositoryImpl(private val context: Context): DatabaseRepository {
                 nameRu = it.nameRu,
                 genres = it.genres,
                 year = it.year,
-               // isFavorite = true
             )
             )
         }

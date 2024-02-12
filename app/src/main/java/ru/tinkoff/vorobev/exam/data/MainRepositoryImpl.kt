@@ -44,7 +44,6 @@ class MainRepositoryImpl (private val networkRepository: NetworkRepository,
                 databaseRepository.insertFavoriteFilm(filmItem, filmInfo.value)
             }
             is ResultWrapper.NetworkError -> {
-                println("Add film Error!!!")
             }
         }
     }

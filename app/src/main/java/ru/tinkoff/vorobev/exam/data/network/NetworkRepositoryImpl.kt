@@ -13,7 +13,6 @@ class NetworkRepositoryImpl (private val serverApi: ServerAPI, private val apiKe
                 Thread.sleep(200)
             }
         } catch (error: Throwable) {
-            println("TEST $error.message")
             return ResultWrapper.NetworkError
         }
         return ResultWrapper.Success(data)
@@ -23,7 +22,6 @@ class NetworkRepositoryImpl (private val serverApi: ServerAPI, private val apiKe
             ResultWrapper.Success(serverApi.getFilmInfo(token = apiKey, id = id).transform())
         }
         catch (error: Throwable){
-            println(error.message)
             ResultWrapper.NetworkError
         }
 }

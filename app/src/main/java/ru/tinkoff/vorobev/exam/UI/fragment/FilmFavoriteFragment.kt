@@ -63,7 +63,6 @@ class FilmFavoriteFragment : Fragment() {
                     binding.searchErrorTextView.isVisible = false
                     binding.recyclerView.isVisible = true
                     viewModel.searchFilm(binding.searchText1.text.toString())
-                    // binding.recyclerView.adapter = SearchFilmItemAdapter(viewModel, binding.searchText1.text.toString())
                     return true
                 }
                 return false
