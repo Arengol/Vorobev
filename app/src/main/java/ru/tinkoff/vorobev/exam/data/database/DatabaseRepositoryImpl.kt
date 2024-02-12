@@ -21,7 +21,8 @@ class DatabaseRepositoryImpl(private val context: Context): DatabaseRepository {
                 posterUrlPreview = it.posterUrlPreview,
                 nameRu = it.nameRu,
                 genres = it.genres,
-                year = it.year
+                year = it.year,
+               // isFavorite = true
             )
             )
         }

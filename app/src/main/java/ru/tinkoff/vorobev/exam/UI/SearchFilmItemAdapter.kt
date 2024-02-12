@@ -22,7 +22,7 @@ class SearchFilmItemAdapter (private val viewModel: FilmViewModel):
                 val InfoFilmTextView : TextView = itemView.findViewById(R.id.InfoFilmTextView)
                 val FavoriteFilmImageView : ImageView = itemView.findViewById(R.id.FavoriteFilmImageView)
             }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchFilmItemAdapter.ItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.recycler_item, parent, false)
         context = parent.context

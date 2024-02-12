@@ -53,6 +53,8 @@ class FilmViewModelImpl @Inject constructor (private val mainRepository: MainRep
                 _popularFilmsData.value = mainRepository.getAllFilms()
                 _popularFilmsState.value = UiState.Success
             } catch (e: Exception) {
+                _popularFilmsData.value = mainRepository.getAllFavoriteFilms()
+                if (!_popularFilmsData.value.isNullOrEmpty()) _popularFilmsData.value!!.forEach { it.isFavorite = true }
                 _popularFilmsState.value = UiState.Error
             }
         }
@@ -88,6 +90,7 @@ class FilmViewModelImpl @Inject constructor (private val mainRepository: MainRep
     }
 
     override fun normalizeState() {
+        if (_popularFilmsState.value != UiState.Error)
         _popularFilmsState.value = UiState.Success
     }
 
